@@ -1,7 +1,7 @@
 <?php
 
 $host = "localhost";
-$dbname = "small_project_dev";
+$dbname = "small_project";
 $username = "root";
 $password = "";
 
