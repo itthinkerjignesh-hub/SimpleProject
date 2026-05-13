@@ -40,12 +40,13 @@ $users = $stmt->fetchAll(PDO::FETCH_ASSOC);
 <body>
 
     <h2>User List Hereee....</h2>
+    <h2>New Head LIne</h2>
 
     <table>
 
         <tr>
             <th>ID</th>
-            <th>Name dddddd</th>
+            <th>Name</th>
             <th>Email</th>
         </tr>
 
