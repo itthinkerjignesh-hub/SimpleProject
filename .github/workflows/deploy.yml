@@ -13,9 +13,16 @@ jobs:
       - name: Checkout Code
         uses: actions/checkout@v4
 
-      - name: Show Files
+      - name: Show Current Files
         run: dir
 
-      - name: Deploy To Fake Production
+      - name: Create Fake Production Folder
         run: |
-          xcopy /E /Y /I * "E:\xampp\htdocs\fake_production\"
+          if not exist "E:\xampp\htdocs\fake_production" mkdir "E:\xampp\htdocs\fake_production"
+
+      - name: Deploy Files
+        run: |
+          robocopy . "E:\xampp\htdocs\fake_production" /E
+
+      - name: Deployment Success
+        run: echo Deployment Completed
