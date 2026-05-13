@@ -10,6 +10,7 @@ jobs:
     runs-on: self-hosted
 
     steps:
+
       - name: Checkout Code
         uses: actions/checkout@v4
 
@@ -25,9 +26,9 @@ jobs:
           $source = "${{ github.workspace }}"
           $destination = "E:\xampp\htdocs\fake_production"
 
-          robocopy $source $destination /E `
+          robocopy $source $destination /E /MT:8 `
             /XD ".git" ".github" `
-            /XF "database.sql" "config\database.php"
+            /XF "database.php" "database.sql"
 
           if ($LASTEXITCODE -le 3) {
             Write-Host "Robocopy Success"
@@ -38,8 +39,9 @@ jobs:
           }
 
       - name: Run Database Migrations
+        shell: powershell
         run: |
           php E:\xampp\htdocs\fake_production\run_migrations.php
 
-      - name: Success Message
-        run: echo Deployment Successful
+      - name: Deployment Success
+        run: echo "Deployment Completed Successfully"
