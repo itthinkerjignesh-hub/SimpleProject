@@ -1,0 +1,21 @@
+name: PHP CI/CD
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: self-hosted
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Show Files
+        run: dir
+
+      - name: Deploy To Fake Production
+        run: |
+          xcopy /E /Y /I . E:\xampp\htdocs\fake_production
