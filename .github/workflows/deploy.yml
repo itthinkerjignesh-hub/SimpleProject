@@ -29,6 +29,14 @@ jobs:
             /XD ".git" ".github" `
             /XF "database.sql" "config\database.php"
 
+          if ($LASTEXITCODE -le 3) {
+            Write-Host "Robocopy Success"
+            exit 0
+          } else {
+            Write-Host "Robocopy Failed"
+            exit $LASTEXITCODE
+          }
+
       - name: Run Database Migrations
         run: |
           php E:\xampp\htdocs\fake_production\run_migrations.php
