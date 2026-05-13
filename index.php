@@ -45,7 +45,7 @@ $users = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
         <tr>
             <th>ID</th>
-            <th>Name</th>
+            <th>Name dddddd</th>
             <th>Email</th>
         </tr>
 
