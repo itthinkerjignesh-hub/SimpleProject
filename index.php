@@ -88,6 +88,7 @@ $products = $productStmt->fetchAll(PDO::FETCH_ASSOC);
             <th>Product Name</th>
             <th>Price</th>
             <th>Stock</th>
+            <th>Category</th>
         </tr>
 
         <?php foreach ($products as $product): ?>
