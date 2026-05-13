@@ -10,6 +10,21 @@ $stmt->execute();
 
 $users = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
+
+/*
+|--------------------------------------------------------------------------
+| Products Query
+|--------------------------------------------------------------------------
+*/
+
+$productQuery = "SELECT * FROM products";
+
+$productStmt = $pdo->prepare($productQuery);
+
+$productStmt->execute();
+
+$products = $productStmt->fetchAll(PDO::FETCH_ASSOC);
+
 ?>
 
 <!DOCTYPE html>
@@ -61,6 +76,33 @@ $users = $stmt->fetchAll(PDO::FETCH_ASSOC);
         <?php endforeach; ?>
 
     </table>
+
+     <!-- Products Table -->
+
+    <h2>Product Listing</h2>
+
+    <table>
+
+        <tr>
+            <th>ID</th>
+            <th>Product Name</th>
+            <th>Price</th>
+            <th>Stock</th>
+        </tr>
+
+        <?php foreach ($products as $product): ?>
+
+            <tr>
+                <td><?= $product['id']; ?></td>
+                <td><?= $product['name']; ?></td>
+                <td>₹<?= $product['price']; ?></td>
+                <td><?= $product['stock']; ?></td>
+            </tr>
+
+        <?php endforeach; ?>
+
+    </table>
+
 
 </body>
 </html>
