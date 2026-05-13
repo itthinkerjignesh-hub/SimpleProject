@@ -79,7 +79,7 @@ $products = $productStmt->fetchAll(PDO::FETCH_ASSOC);
 
      <!-- Products Table -->
 
-    <h2>Product Listing</h2>
+    <h2>Product Listing 22222</h2>
 
     <table>
 
