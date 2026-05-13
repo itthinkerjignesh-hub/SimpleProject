@@ -1,11 +1,12 @@
 <?php
 
 $host = "localhost";
-$dbname = "small_project";
+$dbname = "small_project_dev";
 $username = "root";
 $password = "";
 
 try {
+
     $pdo = new PDO(
         "mysql:host=$host;dbname=$dbname",
         $username,
@@ -15,5 +16,6 @@ try {
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
 } catch (PDOException $e) {
-    die("Database Connection Failed: " . $e->getMessage());
+
+    die("Connection failed: " . $e->getMessage());
 }

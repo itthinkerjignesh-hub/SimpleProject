@@ -1,19 +1,8 @@
 <?php
 
-$host = "localhost";
-$dbname = "small_project";
-$username = "root";
-$password = "";
+require_once __DIR__ . '/config/database.php';
 
 try {
-
-    $pdo = new PDO(
-        "mysql:host=$host;dbname=$dbname",
-        $username,
-        $password
-    );
-
-    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
     $migrationPath = __DIR__ . '/database/migrations/';
 
@@ -32,7 +21,9 @@ try {
         $check->execute([$file]);
 
         if ($check->fetchColumn() > 0) {
+
             echo "Skipping: $file\n";
+
             continue;
         }
 
