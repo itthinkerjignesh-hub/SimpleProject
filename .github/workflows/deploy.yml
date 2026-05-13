@@ -18,10 +18,16 @@ jobs:
         run: |
           New-Item -ItemType Directory -Force -Path "E:\xampp\htdocs\fake_production"
 
-      - name: Deploy Files
+      - name: Deploy Project Files
         shell: powershell
         run: |
-          Copy-Item -Path * -Destination "E:\xampp\htdocs\fake_production" -Recurse -Force
+
+          $source = "${{ github.workspace }}"
+          $destination = "E:\xampp\htdocs\fake_production"
+
+          robocopy $source $destination /E `
+            /XD ".git" ".github" `
+            /XF "database.sql" "config\database.php"
 
       - name: Run Database Migrations
         run: |
