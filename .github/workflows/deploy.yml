@@ -13,16 +13,18 @@ jobs:
       - name: Checkout Code
         uses: actions/checkout@v4
 
-      - name: Show Current Files
+      - name: Show Files
         run: dir
 
       - name: Create Fake Production Folder
+        shell: powershell
         run: |
-          if not exist "E:\xampp\htdocs\fake_production" mkdir "E:\xampp\htdocs\fake_production"
+          New-Item -ItemType Directory -Force -Path "E:\xampp\htdocs\fake_production"
 
       - name: Deploy Files
+        shell: powershell
         run: |
-          robocopy . "E:\xampp\htdocs\fake_production" /E
+          Copy-Item -Path * -Destination "E:\xampp\htdocs\fake_production" -Recurse -Force
 
-      - name: Deployment Success
-        run: echo Deployment Completed
+      - name: Success Message
+        run: echo Deployment Successful
